@@ -5,11 +5,15 @@ import { getToken } from '../data/common.js';
 
 const updateMerchantPayload = JSON.parse(open('../json/updateMerchant.json'));
 
-export default function () {
-    const token = getToken();
-    const merchantResponse = http.patch(testData.baseUrl + testData.merchantUrl + '/04da6f45-efcf-4027-971c-cf13de607b2b', JSON.stringify(updateMerchantPayload), {
+// Use setup() to fetch the token before the test starts
+export function setup() {
+    return { token: getToken() };  // Get token once and share it across iterations
+}
+
+export default function (data) {
+    const merchantResponse = http.patch(testData.baseUrl + testData.merchantUrl + '/' + testData.merchantId, JSON.stringify(updateMerchantPayload), {
         headers: {
-            'Authorization': 'Bearer ' + token.id_token,
+            'Authorization': 'Bearer ' + data.token.id_token,  // Use token from setup()
             'Content-Type': 'application/json'
         }
     });

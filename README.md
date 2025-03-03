@@ -8,3 +8,8 @@ Run test cloud:
 ```
 k6 cloud tests/getListMerchant.js
 ```
+Run all js file:
+```
+./run_all_file.sh
+```
+Cloud: https://xuanhavcdn.grafana.net/a/k6-app/projects/3751909

@@ -3,11 +3,15 @@ import { check, sleep } from 'k6';
 import testData from '../data/testData.js';
 import { getToken } from '../data/common.js';
 
-export default function () {
-    const token = getToken();
-    const merchantResponse = http.get(testData.baseUrl + testData.merchantUrl + '/04da6f45-efcf-4027-971c-cf13de607b2b', {
+// Use setup() to fetch the token before the test starts
+export function setup() {
+    return { token: getToken() };  // Get token once and share it across iterations
+}
+
+export default function (data) {
+    const merchantResponse = http.get(testData.baseUrl + testData.merchantUrl + '/' + testData.merchantId, {
         headers: {
-            'Authorization': 'Bearer ' + token.id_token
+            'Authorization': 'Bearer ' + data.token.id_token  // Use token from setup()
         }
     });
     check(merchantResponse, {
