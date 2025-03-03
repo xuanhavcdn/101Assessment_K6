@@ -1,0 +1,15 @@
+{
+    "baseCurrency": "GBP",
+    "invoicePrefix": "INVxxxxxx",
+    "dueAfter": 30,
+    "nextInvoiceNumber": 1,
+    "mcc": "80-01-01",
+    "mccName": "SHOPPING & RETAIL",
+    "loyaltyEligible": true,
+    "category": {
+      "categoryName": "Retail",
+      "categoryCode": "RETAIL",
+      "riskLevel": "LOW",
+      "description": "Retail category for consumer goods."
+    }
+  }
